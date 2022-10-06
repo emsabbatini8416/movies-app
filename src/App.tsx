@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { QueryClient, QueryClientProvider } from 'react-query'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { Layout } from './layouts';
+import { Wrapper } from './components';
+import { Movies } from "./pages";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 2,
+      onError: error => {
+        const message = ''
+        return message
+      },
+    },
+  },
+})
+
+const AppRoute = () => Movies as JSX.Element
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <Layout>
+      <Wrapper>
+        <AppRoute />
+      </Wrapper>
+    </Layout>
+  </QueryClientProvider>
+)
 
 export default App;
