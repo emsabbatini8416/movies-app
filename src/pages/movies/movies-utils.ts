@@ -50,7 +50,7 @@ const useSearchMovie = () => {
       const results = data.results as MovieResponsePayload[]
       setMovies(results)
     } else {
-      setMovies(queryCache.state.data.results)
+      setMovies(queryCache?.state?.data?.results)
     }
 
   }, [data, isLoading, setMovies, queryCache, debounceQuery])
