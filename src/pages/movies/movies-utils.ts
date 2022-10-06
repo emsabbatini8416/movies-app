@@ -77,7 +77,6 @@ const useMovieDetail = () => {
     setMovieSelected(movie)
     setShowDetail(true)
     window.scrollTo(0, 0)
-    
   }
 
   const handleClose = () => {
