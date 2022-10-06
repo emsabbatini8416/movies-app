@@ -76,6 +76,8 @@ const useMovieDetail = () => {
   const handleSelectMovie = (movie: MovieResponsePayload) => {
     setMovieSelected(movie)
     setShowDetail(true)
+    window.scrollTo(0, 0)
+    
   }
 
   const handleClose = () => {
