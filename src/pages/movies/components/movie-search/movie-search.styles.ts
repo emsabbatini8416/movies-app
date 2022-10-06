@@ -8,8 +8,3 @@ export const StyledContainer = styled.div`
   height: 100px;
   background-color: gray;
 `
-
-export const StyledInputText = styled.input`
-  padding: 10px 16px;
-  min-width: 300px;
-`

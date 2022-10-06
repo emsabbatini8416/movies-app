@@ -1,8 +1,9 @@
 import * as React from "react"
 
+import { Input } from "../../../../components"
 import { MoviesContext } from "../../contexts"
 import { useSearchMovie } from "../../movies-utils"
-import { StyledContainer, StyledInputText } from "./movie-search.styles"
+import { StyledContainer } from "./movie-search.styles"
 
 const MovieSearch = () => {
   const { setMovies } = React.useContext(MoviesContext)
@@ -11,7 +12,7 @@ const MovieSearch = () => {
 
   return (
     <StyledContainer>
-      <StyledInputText type="search" placeholder="Search Movie..." onChange={handleChange} />
+      <Input type="search" placeholder="Search Movie..." onChange={handleChange} />
     </StyledContainer>
   )
 } 
