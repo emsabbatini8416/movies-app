@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledMovie = styled.div`
-  background-color: #3f51b5;
+  background-color: lightgrey;
   border-radius: 3px;
   cursor: pointer;
   margin: 10px;
