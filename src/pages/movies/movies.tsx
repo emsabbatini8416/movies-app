@@ -1,10 +1,12 @@
 
 import React from "react"
 
+import { Modal } from "../../components"
+import MovieDetail from "./components/movie-detail"
 import MovieList from "./components/movie-list"
 import MovieSearch from "./components/movie-search"
 import { MoviesProvider } from "./contexts"
-import { useMovieList, useSearchMovie } from "./movies-utils"
+import { useMovieDetail, useMovieList, useSearchMovie } from "./movies-utils"
 
 const MoviesPageContent = () => {
 
@@ -12,10 +14,17 @@ const MoviesPageContent = () => {
 
   const { handleChange, status: statusMovieSearch } = useSearchMovie()
 
+  const { showDetail, handleClose, movieSelected, handleSelectMovie } = useMovieDetail()
+
   return (
     <React.Fragment>
       <MovieSearch handleChange={handleChange} />
-      {(statusMovieList !== 'loading' && statusMovieSearch !== 'loading') && <MovieList />}
+      {(statusMovieList !== 'loading' && statusMovieSearch !== 'loading') && <MovieList handleSelectMovie={handleSelectMovie}  />}
+      {showDetail && movieSelected && (
+        <Modal onClose={handleClose}>
+          <MovieDetail movie={movieSelected} />
+        </Modal>
+      )}
     </React.Fragment>
   )
 }

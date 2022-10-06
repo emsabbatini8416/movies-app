@@ -17,12 +17,12 @@ export const StyledModalBackdrop = styled.div`
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.75);
 `
 
 export const StyledModalContent = styled.div`
   width: 100%;
-  max-width: 480px;
+  max-width: 580px;
   z-index: 1;
   background-color: white;
   padding: 10px;

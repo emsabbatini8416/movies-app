@@ -9,6 +9,19 @@ export interface MoviesContextValues {
 
 export interface MoviesProviderProps { }
 
+export interface MovieListProps {
+  handleSelectMovie: (movie: MovieResponsePayload) => void 
+}
+
 export interface MovieSearchProps {
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+export interface MovieDetailProps {
+  movie: MovieResponsePayload
+}
+
+export interface MovieProps extends MovieDetailProps {
+  handleSelectMovie?: MovieListProps['handleSelectMovie']
+  alt: string
 }

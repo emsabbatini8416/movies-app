@@ -69,4 +69,25 @@ const useSearchMovie = () => {
 
 }
 
-export { useMovieList, useSearchMovie }
+const useMovieDetail = () => {
+  const [showDetail, setShowDetail] = React.useState<boolean>(false)
+  const [movieSelected, setMovieSelected] = React.useState<MovieResponsePayload>(null)
+
+  const handleSelectMovie = (movie: MovieResponsePayload) => {
+    setMovieSelected(movie)
+    setShowDetail(true)
+  }
+
+  const handleClose = () => {
+    setShowDetail(false)
+  }
+
+  return {
+    showDetail,
+    movieSelected,
+    handleSelectMovie,
+    handleClose
+  }
+}
+
+export { useMovieList, useSearchMovie, useMovieDetail }
