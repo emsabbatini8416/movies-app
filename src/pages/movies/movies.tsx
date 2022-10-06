@@ -1,25 +1,29 @@
 
-import type { MovieResponsePayload } from "../../typings/services"
+import React from "react"
 
 import MovieList from "./components/movie-list"
 import MovieSearch from "./components/movie-search"
 import { MoviesProvider } from "./contexts"
-import { useMovieList } from "./movies-utils"
+import { useMovieList, useSearchMovie } from "./movies-utils"
 
-const MoviesPage = () => {
+const MoviesPageContent = () => {
 
-  const { data, status } = useMovieList()
+  const { status: statusMovieList } = useMovieList()
 
-  if (status === 'loading') return null
-
-  const movies = data.results as MovieResponsePayload[]
+  const { handleChange, status: statusMovieSearch } = useSearchMovie()
 
   return (
-    <MoviesProvider movies={movies}>
-      <MovieSearch />
-      <MovieList />
-    </MoviesProvider>
+    <React.Fragment>
+      <MovieSearch handleChange={handleChange} />
+      {(statusMovieList !== 'loading' && statusMovieSearch !== 'loading') && <MovieList />}
+    </React.Fragment>
   )
 }
+
+const MoviesPage = () => (
+  <MoviesProvider>
+    <MoviesPageContent />
+  </MoviesProvider>
+)
 
 export default MoviesPage

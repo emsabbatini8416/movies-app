@@ -7,6 +7,8 @@ export interface MoviesContextValues {
   setMovies: (movies: MovieResponsePayload[]) => void
 }
 
-export interface MoviesProviderProps extends Pick<MoviesContextValues, 'movies'>{
-  children: React.ReactNode
+export interface MoviesProviderProps { }
+
+export interface MovieSearchProps {
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }

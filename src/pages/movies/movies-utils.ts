@@ -5,16 +5,35 @@ import { ApiRoute, popularMoviesApi, searchMovieApi } from "../../services"
 import { useDebounce, useQueryCache } from "../../hooks"
 import { MovieResponsePayload } from "../../typings/services"
 import { ServerResponse } from "../../typings/utils"
+import { MoviesContext } from "./contexts"
 
 const useMovieList = () => {
 
+  const { setMovies } = React.useContext(MoviesContext)
+
   const queryResult = useQuery(ApiRoute.POPULAR_MOVIES, () => popularMoviesApi())
 
-  return queryResult
+  const { data, isLoading, status } = queryResult
+
+  React.useEffect(() => {
+
+    if (data && !isLoading) {
+      const results = data.results as MovieResponsePayload[]
+      setMovies(results)
+    }
+
+  }, [data, isLoading, setMovies])
+
+  return {
+    status
+  }
 
 }
 
-const useSearchMovie = (setMovies: (movies: MovieResponsePayload[]) => void) => {
+const useSearchMovie = () => {
+
+  const { setMovies } = React.useContext(MoviesContext)
+
   const [query, setQuery] = React.useState<string>('')
 
   const debounceQuery = useDebounce(query, 500)

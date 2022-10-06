@@ -5,10 +5,10 @@ import type { MovieResponsePayload } from "../../../../typings/services";
 
 const MoviesContext = React.createContext<MoviesContextValues>(null);
 
-const MoviesProvider = (props: MoviesProviderProps) => {
-  const { children, movies: popularMovies } = props
+const MoviesProvider = (props: React.PropsWithChildren<MoviesProviderProps>) => {
+  const { children } = props
 
-  const [movies, setMovies] = React.useState<MovieResponsePayload[]>(popularMovies)
+  const [movies, setMovies] = React.useState<MovieResponsePayload[]>([])
 
   const value: MoviesContextValues = {
     movies,
