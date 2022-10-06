@@ -9,7 +9,7 @@ import { MoviesProvider } from "./contexts"
 import { useMovieDetail, useMovieList, useSearchMovie } from "./movies-utils"
 
 const MoviesPageContent = () => {
-
+  
   const { status: statusMovieList } = useMovieList()
 
   const { handleChange, status: statusMovieSearch } = useSearchMovie()
@@ -21,7 +21,7 @@ const MoviesPageContent = () => {
       <MovieSearch handleChange={handleChange} />
       {(statusMovieList !== 'loading' && statusMovieSearch !== 'loading') && <MovieList handleSelectMovie={handleSelectMovie}  />}
       {showDetail && movieSelected && (
-        <Modal onClose={handleClose}>
+        <Modal onClose={handleClose} isOpen={showDetail}>
           <MovieDetail movie={movieSelected} />
         </Modal>
       )}

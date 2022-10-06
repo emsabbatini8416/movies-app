@@ -4,7 +4,19 @@ import type { ModalProps } from "../../typings/components"
 import { StyledModalContainer, StyledModalBackdrop, StyledModalContent } from "./modal.styles"
 
 const Modal = (props: React.PropsWithChildren<ModalProps>) => {
-  const { children, onClose } = props
+  const { children, onClose, isOpen } = props
+
+  React.useEffect(() => {
+    
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+    
+  }, [isOpen])
 
   return(
     <StyledModalContainer>
