@@ -8,6 +8,4 @@ const Movies = (
   </React.Suspense>
 )
 
-export {
-  Movies
-}
+export { Movies }

@@ -1,4 +1,4 @@
-import { HttpCode } from "../../utils"
+import { HttpCode } from '../../utils'
 
 export interface ServerResponse<T> {
   page: number

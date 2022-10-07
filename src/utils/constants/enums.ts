@@ -12,5 +12,4 @@ export enum HttpCode {
   INVALID_TOKEN = 498,
   SERVER = 500,
   GATEWAY_TIMEOUT = 504,
-  }
-  
+}

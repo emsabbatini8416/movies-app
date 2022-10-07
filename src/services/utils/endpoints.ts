@@ -1,4 +1,4 @@
-import { DOMAIN } from "../../utils";
+import { DOMAIN } from '../../utils'
 
 const ApiRoute = {
   POPULAR_MOVIES: `${DOMAIN}/movie/popular`,

@@ -1,8 +1,8 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 
-import { Layout } from './layouts';
-import { Wrapper } from './components';
-import { Movies } from "./pages";
+import { Layout } from './layouts'
+import { Wrapper } from './components'
+import { Movies } from './pages'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,4 +29,4 @@ const App = () => (
   </QueryClientProvider>
 )
 
-export default App;
+export default App

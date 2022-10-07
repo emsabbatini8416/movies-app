@@ -1,15 +1,13 @@
+import React from 'react'
 
-import React from "react"
-
-import { Modal } from "../../components"
-import MovieDetail from "./components/movie-detail"
-import MovieList from "./components/movie-list"
-import MovieSearch from "./components/movie-search"
-import { MoviesProvider } from "./contexts"
-import { useMovieDetail, useMovieList, useSearchMovie } from "./movies-utils"
+import { Modal } from '../../components'
+import MovieDetail from './components/movie-detail'
+import MovieList from './components/movie-list'
+import MovieSearch from './components/movie-search'
+import { MoviesProvider } from './contexts'
+import { useMovieDetail, useMovieList, useSearchMovie } from './movies-utils'
 
 const MoviesPageContent = () => {
-  
   const { status: statusMovieList } = useMovieList()
 
   const { handleChange, status: statusMovieSearch } = useSearchMovie()
@@ -19,7 +17,9 @@ const MoviesPageContent = () => {
   return (
     <React.Fragment>
       <MovieSearch handleChange={handleChange} />
-      {(statusMovieList !== 'loading' && statusMovieSearch !== 'loading') && <MovieList handleSelectMovie={handleSelectMovie}  />}
+      {statusMovieList !== 'loading' && statusMovieSearch !== 'loading' && (
+        <MovieList handleSelectMovie={handleSelectMovie} />
+      )}
       {showDetail && movieSelected && (
         <Modal onClose={handleClose} isOpen={showDetail}>
           <MovieDetail movie={movieSelected} />

@@ -1,16 +1,16 @@
-import * as React from "react"
+import * as React from 'react'
 
-import type { MovieResponsePayload } from "../services"
+import type { MovieResponsePayload } from '../services'
 
 export interface MoviesContextValues {
   movies: MovieResponsePayload[]
   setMovies: (movies: MovieResponsePayload[]) => void
 }
 
-export interface MoviesProviderProps { }
+export interface MoviesProviderProps {}
 
 export interface MovieListProps {
-  handleSelectMovie: (movie: MovieResponsePayload) => void 
+  handleSelectMovie: (movie: MovieResponsePayload) => void
 }
 
 export interface MovieSearchProps {
